@@ -1,62 +1,97 @@
-const container = document.getElementsByClassName("container")[0]
-fetch('https://www.dolarsi.com/api/api.php?type=valoresprincipales')
-    .then(res => res.json())
-    .then(datos => {
-        marketRates(datos)
-    })
+const container = document.getElementsByClassName("container")[0];
+fetch("https://www.dolarsi.com/api/api.php?type=valoresprincipales")
+    .then((res) => res.json())
+    .then((datos) => {
+        marketRates(datos);
+    });
 
 function marketRates(data) {
     data.forEach(({ casa }, i) => {
         if ([2, 5, 8].includes(i)) return;
         const divGobal = document.createElement("div");
-        const divhead = document.createElement("div");
-        const divBody = document.createElement("div");
-        const divTitle = document.createElement("div");
-        const divBuy = document.createElement("div");
-        const divSale = document.createElement("div");
-        const divValue = document.createElement("div");
-        const divValue2 = document.createElement("div");
-        const divIcon = document.createElement("div");
-        const divFooter = document.createElement("div");
-        const divDate = document.createElement("div");
+        divGobal.classList.add("card");
 
-        divGobal.classList.add("card")
-        divBuy.classList.add("buy")
-        divSale.classList.add("sale")
-        divTitle.classList.add("title")
-        divValue.classList.add("value")
-        divValue2.classList.add("value")
-        divhead.classList.add("head", "card-header")
-        divIcon.classList.add("icon")
-        divBody.classList.add("card-body")
-        divFooter.classList.add("footer")
+        divGobal.appendChild(addHead(casa));
+        divGobal.appendChild(addBody(casa));
+        divGobal.appendChild(addFooter(casa));
 
-
-        divBuy.textContent = "Compra"
-        divSale.textContent = "Venta"
-        divValue.textContent = casa.compra
-        divValue2.textContent = casa.venta
-
-        divTitle.textContent = casa.nombre
-
-        divhead.appendChild(divTitle)
-        divhead.appendChild(divIcon)
-
-        divSale.appendChild(divValue2)
-        divBuy.appendChild(divValue)
-
-        divFooter.textContent = casa.variacion != undefined ? "VARIACIÓN " + casa.variacion : ""
-        divDate.textContent = new Date().toLocaleString()
-        divFooter.appendChild(divDate)
-
-        casa.compra != "No Cotiza" ? divBody.appendChild(divBuy) : divSale.style.margin = 0
-        divBody.appendChild(divSale)
-
-        divGobal.appendChild(divhead)
-        divGobal.appendChild(divBody)
-        divGobal.appendChild(divFooter)
-
-        container.appendChild(divGobal)
-
+        container.appendChild(divGobal);
     });
+}
+
+function addBuy(casa) {
+    const divBuy = document.createElement("div");
+    const divValue = document.createElement("div");
+
+    divBuy.classList.add("buy");
+    divValue.classList.add("value");
+
+    divBuy.innerHTML = `<span>Compra</span>`;
+    divValue.textContent = casa.compra;
+    divBuy.appendChild(divValue);
+    return divBuy;
+}
+
+
+
+function addHead(casa) {
+    const divhead = document.createElement("div");
+    divhead.classList.add("head", "card-header");
+
+    const divTitle = document.createElement("div");
+    const divIcon = document.createElement("div");
+    divTitle.classList.add("title");
+    divIcon.classList.add("icon");
+
+    divTitle.textContent = casa.nombre;
+
+    divhead.appendChild(divTitle);
+    divhead.appendChild(divIcon);
+    return divhead;
+}
+
+function addBody(casa) {
+    const divBody = document.createElement("div");
+    const divSale = addSale(casa);
+    divBody.classList.add("card-body");
+    casa.compra != "No Cotiza" ?
+        divBody.appendChild(addBuy(casa)) :
+        (divSale.style.margin = 0);
+    divBody.appendChild(divSale);
+    return divBody;
+}
+
+function addSale(casa) {
+    const divSale = document.createElement("div");
+    const divValue2 = document.createElement("div");
+    divSale.classList.add("sale");
+    divValue2.classList.add("value");
+
+    divSale.innerHTML = `<span>Venta</span>`;
+    divValue2.textContent = casa.venta;
+    divSale.appendChild(divValue2);
+    return divSale;
+}
+
+function addFooter(casa) {
+    const divFooter = document.createElement("div");
+    divFooter.classList.add("footer");
+    const divDate = document.createElement("div");
+    divFooter.appendChild(variation(casa))
+    divDate.textContent = "Actualizado: " + new Date().toLocaleString();
+    divDate.classList.add("card-footer", "text-muted");
+    divFooter.appendChild(divDate);
+    return divFooter;
+}
+
+function variation(casa) {
+    const divContent = document.createElement("div")
+    console.log(casa.variacion > 0);
+    if (casa.variacion != undefined) {
+        divContent.innerHTML =
+            (casa.variacion[0] == "-") ?
+            `<img src = "img/caret-down-fill.svg" alt=""/> <spam>VARIACIÓN </spam> ${casa.variacion}` :
+            `<img src = "img/caret-up-fill.svg" alt=""/>  <spam>VARIACIÓN +</spam> ${casa.variacion}`;
+    }
+    return divContent
 }
