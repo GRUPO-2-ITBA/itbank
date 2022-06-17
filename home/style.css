@@ -1,103 +1,162 @@
-body {
-    margin: 0;
-    font-family:'Roboto', sans-serif;
-    background-color: #f1f1f1;
+* {
+    box-sizing: border-box;
 }
+
+body {
+     margin: 0;
+     padding: 0;
+     font-family:'Roboto', sans-serif;
+     background-color: #132643;
+     /* background-image: linear-gradient(to bottom, #132643 , #d4d8dc); */
+     /* background: linear-gradient(180deg, #132643 5%, #fc7551 100%); */
+}
+
+main {
+     display: flex;
+     flex-direction: column;
+}
+
+button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+     border: none;
+     background: none;
+     border-radius: 0.3rem;
+     cursor: pointer;
+}
+
+button:hover {
+    background-color: #c2dcff
+}
+
+button:active {
+     background-color: #b5d4ff
+}
+
+
 .imagen-logo {
-    width: 12rem;
+     width: 12rem;
 }
 
 .logo {
-    margin:auto;
-    padding: 0.7rem 0 0.45rem 0;
+     margin:auto;
+     padding: 0.7rem 0 0.45rem 0;
 }
 
 .header {
-    background-color:#45fdc6;
-    display: flex;
-}
-
-.home {
-    padding:1.5rem 1rem 3rem 1rem;
-    background-color: #ececec;
-    display:flex;
-    flex-direction:column;
-    flex-wrap:wrap;
-    justify-content:space-around;
+    /* background-color:#45fdc6; */
+     display: flex;
 }
 
 .saldo {
-    font-weight: 700;
-    font-size: 1.7rem;
+     font-weight: 700;
+     font-size: 1.7rem;
 }
 
-.card-one {
+.card{
      display: flex;
-     justify-content: space-between;
-     align-items: center;
+     flex-direction: column;
+     height: fit-content;
      background-color: rgb(255, 255, 255);
      border-radius: 0.3rem;
      padding:1rem 1rem 1rem 1rem;
-     margin: 0 0 1rem 0;
-     box-shadow: 0 0.2rem 0.3rem #d4d4d4;
+     margin: 1rem;
+     box-shadow:0rem 0.3rem 0.6rem #0000001e;
+}
+
+.button-saldo {
+    width: auto;
 }
 
 .mover-plata {
+    text-align: center;
     display: flex;
     justify-content: space-between;
     margin: 0.75rem 0 0 0;
 }
 
-.item {
+.item-mover-plata {
      margin: 0.5rem 0.2rem 0 0.2rem;
      border-radius: 0.4rem;
      padding: 0.5rem;
-     background-color: #c0fdeb;
-     font-size: 0.8rem;
-     color: #10ac7d;
+     background: #dbe9fd;
+     /* background: linear-gradient(90deg, rgba(19,38,67,1) 22%, rgba(252,117,81,1) 100%); */
+     font-size: .7rem;
+     font-weight: 500;
+     color: #42618f;
 }
 
-.card-two {
-     display: flex;
-     justify-content: center;
-     flex-wrap: wrap;
-     background-color: rgb(255, 255, 255);
-     border-radius: 0.3rem;
-     padding:1rem 1rem 1rem 1rem;
-     box-shadow: 0 0.2rem 0.3rem #d4d4d4;
+.card-title {
+    margin:0;
+    font-size: 1.3rem;
+    font-weight: 700;
 }
 
-.card-two-content {
-    text-align: center;
-    font-size: 0.8rem;
-    width: 5.5rem;
-    background-color: rgb(255, 255, 255);
-    border-radius: 0.3rem;
-    margin: 0.3rem;
-    /* box-shadow: 0 0.2rem 0.3rem #d4d4d4; */
+.card-balance {
+    display: flex;
+    justify-content: space-between;
+    font-weight: 600;
 }
 
-.icon {
+
+.coin {
+    display: flex;
+    justify-content: space-between;
+    height: 2rem;
+    align-items: center;
+    padding: 0.3rem;
+    margin: 0.3rem 0 0.3rem 0;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #42618f;
+    background-color: #dbe9fd;
+    border-radius: 0.4rem;   
+}
+
+.arrow-down {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: auto;
-    height: 4rem;
-    width: 4rem;
-    color: #10ac7d;
-    font-size: 1.7rem;
-    border-radius: 100%;
+    color: #42618f;
+    /* height: 1rem; */
+    font-size: 1.2rem;
+}
+
+.movimientos {
+    display: flex;
+    list-style-type: none;
+    /* height: fit-content; */
     background-color: rgb(255, 255, 255);
-    box-shadow: 0 0.2rem 0.3rem #d4d4d4;
+    border-radius: .3rem;
+    padding:1rem 1rem 1rem 1rem;
+    margin: 1rem;
+    box-shadow: 0 .4rem .5rem #0000001e;
+}
+
+.card-mov-ul {
+    display: flex;
+    flex-direction: column;
+    font-weight: 200;
+    color: rgb(102, 102, 102);
+    padding:0;
+}
+
+.card-mov-li {
+    display: flex;
+    font-weight: 500;
+    justify-content: space-between;
+    padding: .5rem 0 .5rem 0;
+    height: fit-content;
 }
 
 footer {
   position: flex;
   bottom: 0;
   height: 5%;
-  background-color: #fffdf6;
+  background-color: #132643;
   padding: 1.2rem;
-  color: #132643;
+  color: #ffffff;
   text-align: center;
   font-size: small;
 }
@@ -105,7 +164,6 @@ footer {
 ol,li {
   list-style: none;
   display: inline-block;
-  /* margin: 0.4rem; */
   padding:0;
 }
 
@@ -113,12 +171,12 @@ ol,li {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    gap: 0.5rem;
-
+    gap: .5rem;
 }
 
+
 #link {
-  color: rgb(0, 0, 0);
+  color: rgb(255, 255, 255);
   text-decoration: underline;
   font-size: medium;
   font-weight: 500;
@@ -127,3 +185,57 @@ ol,li {
 #link:active {
   color: #000;
 }
+
+
+@media (min-width: 768px) {
+
+
+    body {
+        background: #132643;
+    }
+    main {
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: center;
+        align-content: center;
+        /* justify-items: center; */
+        max-width: 100rem;
+        font-size: 150%;
+        padding: 0;
+        margin: auto;
+    }
+
+    .saldo {
+        font-size: 2.8rem;
+    }
+
+    /* .mover-plata {
+        justify-content: flex-start ;
+    } */
+
+    .item-mover-plata {
+        font-size: 1.1rem;
+        flex-grow: 1;
+    }
+
+    .card-title {
+        font-size: 2rem;
+        font-weight: 500;
+    }
+
+    .card-mov-li {
+        font-weight: 400;
+        padding: .7rem 0 .7rem 0;
+    }
+
+    .coin {
+        font-weight: 500;
+        font-size: 1.7rem;
+        padding: 2rem .7rem 2rem .7rem;
+    }
+
+    .movimientos {
+        width: 45rem;
+        height: fit-content;      
+    }
+} 

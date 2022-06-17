@@ -34,6 +34,7 @@ body {
     height: 100%;
     width: 100%;
     justify-self: center;
+    padding: 2rem;
 }
 
 .main .login__container-logo {
@@ -50,13 +51,6 @@ body {
     object-fit: cover;
 }
 
-.main .login .title-form {
-
-    font-size: clamp(2rem, 5vw, 3rem);
-    color: #8B98A9;
-    font-weight: 400;
-    text-align: center;
-}
 
 .form-login {
     height: 80%;
@@ -117,37 +111,37 @@ label {
 
 .btn-login {
     width: 100%;
-    background-color: #fffdf6;
-    border-color: #000;
+    background-color: rgba(38,224,167, .7);
     height: 4rem;
+    border: none;
     cursor: pointer;
     font-family: 'Inter', sans-serif;
     font-size: 1.4rem;
     transition: 0.3s linear;
-    border-radius: 10px 10px;
+   border-radius: 2rem;
+   color: #fff;
+   box-shadow: 0px 10px 6px -3px rgba(0,0,0,0.07);
 }
 
 .btn-login:hover {
-    background-color: #26e0a7;
-    border-color:#26e0a7;
-    color: white;
+    background-color: rgb(38, 224, 167);
 }
 
 .help-login {
-    margin-top: 5rem;
-    color: #FF9B56;
+    margin-top: 3rem;
+    color: #FC7551;
     font-size: 1.4rem;
 }
 
 .register-text {
     margin-top: 2rem;
     text-align: center;
-    font-size: 1.6rem;
+    font-size: 1.5rem;
 }
 
 .register-link {
     margin-top: 1.5rem;
-    color: #FF9B56;
+    color: #FC7551;
     font-size: 1.4rem;
 }
 
@@ -164,18 +158,19 @@ label {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 2rem;
-    width: 8rem;
-    height: 8rem;
-    background-color: #EDEDED;
+    margin: 0 1rem 1rem 0;
+    width: clamp(6rem, 6vw, 7.7rem);
+    height: clamp(6rem, 6vw, 7.7rem);
+    background-color:  rgba(38,224,167, .9);
     border-radius: 50%;
-    font-size: 1.5rem;
+    font-size: clamp(.6rem, 5vw, 1.4rem);
     cursor: pointer;
     text-transform: uppercase;
+    color: #fff;
 }
 
 .btn-help:hover {
-    background-color: #dcdbdb;
+    background-color:  rgb(38, 224, 167);
 }
 
 
