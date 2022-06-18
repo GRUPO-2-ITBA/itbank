@@ -8,13 +8,14 @@ fetch("https://www.dolarsi.com/api/api.php?type=valoresprincipales")
 function marketRates(data) {
     data.forEach(({ casa }, i) => {
         if ([2, 5, 8].includes(i)) return;
+
         const divGobal = document.createElement("div");
         divGobal.classList.add("card");
 
         divGobal.appendChild(addHead(casa));
         divGobal.appendChild(addBody(casa));
         divGobal.appendChild(addFooter(casa));
-
+        if (![0, 1].includes(i)) { divGobal.classList.add("notVisible") }
         container.appendChild(divGobal);
     });
 }
@@ -90,8 +91,22 @@ function variation(casa) {
     if (casa.variacion != undefined) {
         divContent.innerHTML =
             (casa.variacion[0] == "-") ?
-            `<img src = "img/caret-down-fill.svg" alt=""/> <spam>VARIACIÓN </spam> ${casa.variacion}` :
-            `<img src = "img/caret-up-fill.svg" alt=""/>  <spam>VARIACIÓN +</spam> ${casa.variacion}`;
+            `<img src = "../img/caret-down-fill.svg" alt=""/> <span class="variation-span">VARIACIÓN </span> ${casa.variacion}` :
+            `<img src = "../img/caret-up-fill.svg" alt=""/>  <span>VARIACIÓN +</span> ${casa.variacion}`;
     }
     return divContent
+}
+
+function boxReduce() {
+    notVisible = [...document.getElementsByClassName("notVisible")]
+    button = document.getElementsByClassName("redux")[0]
+    notVisible.forEach(card => {
+        if (card.style.display == "block") {
+            card.style.display = "none"
+            button.innerHTML = `<div class="arrow-down"><i class="fa-solid fa-chevron-down">`
+        } else {
+            card.style.display = "block"
+            button.innerHTML = `<div class="arrow-up"><i class="fa-solid fa-chevron-up">`
+        }
+    });
 }
